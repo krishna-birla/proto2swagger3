@@ -1,0 +1,87 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Example service",
+    "description": "Example service description",
+    "contact": {
+      "name": "Example contact"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "//localhost:9999/example/api/v1"
+    }
+  ],
+  "paths": {
+    "/exampleResource": {
+      "get": {
+        "summary": "Example API",
+        "description": "Example API description",
+        "operationId": "example-operation",
+        "parameters": [
+          {
+            "name": "example-query",
+            "in": "query",
+            "description": "example-query description",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/common.StatusMessage"
+                }
+              },
+              "application/yaml": {
+                "schema": {
+                  "$ref": "#/components/schemas/common.StatusMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/common.StatusMessage"
+                }
+              },
+              "application/yaml": {
+                "schema": {
+                  "$ref": "#/components/schemas/common.StatusMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "common.StatusMessage": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
